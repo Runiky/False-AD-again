@@ -714,7 +714,7 @@ function onLoad() {
     if (player.infchallengeTimes === undefined) player.infchallengeTimes = [600*60*24*31, 600*60*24*31, 600*60*24*31, 600*60*24*31, 600*60*24*31, 600*60*24*31, 600*60*24*31, 600*60*24*31]
     if (player.lastTenRuns === undefined) player.lastTenRuns = [[600*60*24*31, 1], [600*60*24*31, 1], [600*60*24*31, 1], [600*60*24*31, 1], [600*60*24*31, 1], [600*60*24*31, 1], [600*60*24*31, 1], [600*60*24*31, 1], [600*60*24*31, 1], [600*60*24*31, 1]]
     if (player.infMult === undefined) player.infMult = new Decimal(1)
-    if (player.infMultCost === undefined) player.infMultCost = new Decimal(10)
+    if (player.infMultCost === undefined) player.infMultCost = new Decimal(1.00001)
     if (player.tickspeedBoostCost === undefined) player.tickspeedBoostCost = new Decimal(10)
     if (player.tickSpeedMultDecrease === undefined) player.tickSpeedMultDecrease = 10
     if (player.tickSpeedMultDecreaseCost === undefined) player.tickSpeedMultDecreaseCost = 3e6
