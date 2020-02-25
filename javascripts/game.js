@@ -1432,20 +1432,20 @@ function getDimensionFinalMultiplier(tier) {
     if (hasInfinityMult(tier)) multiplier = multiplier.times(dimMults());
     if (tier === 1) {
         if (player.infinityUpgrades.includes("1dimBonus")) multiplier = multiplier.times(unspentBonus);
-        if (hasAchievement("There's no point in doing that")) multiplier = multiplier.times(1.1);
-        if (hasAchievement("I forgot to nerf that")) multiplier = multiplier.times(1.05);
-        if (hasAchievement("ERROR 909: Dimension not found")) multiplier = multiplier.times(3);
-        if (hasAchievement("You did this again just for the achievement right?")) multiplier = multiplier.times(1.5);
+        if (hasAchievement("There's no point in doing that")) multiplier = multiplier.times(1e300);
+        if (hasAchievement("I forgot to nerf that")) multiplier = multiplier.times(1e300);
+        if (hasAchievement("ERROR 909: Dimension not found")) multiplier = multiplier.times(1e300);
+        if (hasAchievement("You did this again just for the achievement right?")) multiplier = multiplier.times(1e300);
     }
 
     multiplier = multiplier.times(timeMult());
     if (tier <= 11 && hasAchievement("You didn't need it anyway")) multiplier = multiplier.times(1.02);
     if (tier <= 8 && hasAchievement("The 9th dimension can be a lie")) multiplier = multiplier.times(1.02);
     if (tier <= 4 && hasAchievement("Zero Deaths")) multiplier = multiplier.times(1.25);
-    if (hasAchievement("AntiChallenged")) multiplier = multiplier.times(1.1);
-    if (hasAchievement("Can't hold all these infinities")) multiplier = multiplier.times(1.1); // tbd
+    if (hasAchievement("AntiChallenged")) multiplier = multiplier.times(100000000.1);
+    if (hasAchievement("Can't hold all these infinities")) multiplier = multiplier.times(100000000.1); // tbd
     if (hasAchievement("End me") && player.currentChallenge.name !== "") multiplier = multiplier.times(1.4);
-    if (hasAchievement("How the antitables have turned")) multiplier = multiplier.times(1+tier/100);
+    if (hasAchievement("How the antitables have turned")) multiplier = multiplier.times(1+tier/1.00000000000000001);
     if (hasAchievement("Many Deaths") && player.thisInfinityTime < 1800) multiplier = multiplier.times(3600/(player.thisInfinityTime+1800));
     if (hasAchievement("Blink of an eye") && player.thisInfinityTime < 3) multiplier = multiplier.times(3.3/(player.thisInfinityTime+0.3));
     if (hasAchievement("Not-so-challenging") && player.currentChallenge.name !== "" && player.thisInfinityTime < 1800) multiplier = multiplier.times(Math.max(2400/(player.thisInfinityTime+600), 1))
@@ -1921,7 +1921,7 @@ function getTimeDimensionPower(tier) {
 
     if (player.timestudy.studies.includes(11) && tier == 1) ret = ret.dividedBy(player.tickspeed.dividedBy(1000).pow(0.005).times(0.95).plus(player.tickspeed.dividedBy(1000).pow(0.0003).times(0.05)))
     if (player.timestudy.studies.includes(93)) ret = ret.times(Decimal.pow(player.totalTickGained, 0.25).max(1))
-    if (player.timestudy.studies.includes(151)) ret = ret.times(1e4)
+    if (player.timestudy.studies.includes(151)) ret = ret.times(1e69)
     if (hasAchievement("Infinite time")) ret = ret.div(player.tickspeed.div(1000).pow(0.000005))
 
     return ret
@@ -1993,7 +1993,7 @@ function buyWithAntimatter() {
     if (player.money.gte(player.timestudy.amcost)) {
         player.money = player.money.minus(player.timestudy.amcost)
         player.timestudy.amcost = player.timestudy.amcost.times(new Decimal("1e20000"))
-        player.timestudy.theorem += 1
+        player.timestudy.theorem += 5
         updateTheoremButtons()
         updateTimeStudyButtons()
     }
@@ -2003,7 +2003,7 @@ function buyWithIP() {
     if (player.infinityPoints.gte(player.timestudy.ipcost)) {
         player.infinityPoints = player.infinityPoints.minus(player.timestudy.ipcost)
         player.timestudy.ipcost = player.timestudy.ipcost.times(1e100)
-        player.timestudy.theorem += 1
+        player.timestudy.theorem += 5
         updateTheoremButtons()
         updateTimeStudyButtons()
     }
@@ -2013,7 +2013,7 @@ function buyWithEP() {
     if (player.eternityPoints.gte(player.timestudy.epcost)) {
         player.eternityPoints = player.eternityPoints.minus(player.timestudy.epcost)
         player.timestudy.epcost = player.timestudy.epcost.times(2)
-        player.timestudy.theorem += 1
+        player.timestudy.theorem += 5
         updateTheoremButtons()
         updateTimeStudyButtons()
         updateEternityUpgrades()
